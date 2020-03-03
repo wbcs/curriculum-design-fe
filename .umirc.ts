@@ -12,6 +12,10 @@ export default defineConfig({
     }
   ],
   extraBabelPlugins: [
-    ['babel-plugin-import', { libraryName: 'antd', style: true }]
-  ]
+    ['import', {
+      libraryName: 'antd',
+      libraryDirectory: 'es',
+      style: true
+    }]
+  ],
 })
