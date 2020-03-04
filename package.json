@@ -23,13 +23,20 @@
   "dependencies": {
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.0.0",
+    "axios": "^0.19.2",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
+    "qs": "^6.9.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "socket.io": "^2.3.0",
+    "styled-jsx": "^3.2.4",
     "umi": "^3.0.0",
     "yorkie": "^2.0.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "devDependencies": {
+    "@types/qs": "^6.9.1",
+    "@types/styled-jsx": "^2.2.8"
+  }
 }
