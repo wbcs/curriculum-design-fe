@@ -33,7 +33,9 @@ class Header extends React.Component {
             </Link>
           </Menu.Item>
         </Menu>
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <Link to="/user">
+          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        </Link>
       </Layout.Header>
     )
   }

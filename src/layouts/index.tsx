@@ -6,7 +6,7 @@ interface IProps {
 }
 
 const Layout: React.FC<IProps> = ({ children }) => (
-  <div>
+  <div style={{ minHeight: '100vh' }}>
     <Header />
     {children}
   </div>

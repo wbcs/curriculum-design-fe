@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "dev": "npm start",
     "start": "umi dev",
     "build": "umi build",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
