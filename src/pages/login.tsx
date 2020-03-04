@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { connect } from 'dva'
 import { FormInstance } from 'rc-field-form'
 import { Form, Input, Button, Radio, InputNumber } from 'antd'
 import { fetchSignUp, fetchLogin } from '@/api'
@@ -43,18 +44,7 @@ const renderTeacherItems = () => (
 
 const Login = () => {
   const formRef = useRef<FormInstance>()
-  const onFinish = (values: object) => {
-    fetchLogin(values).then(res => {
-      console.log(res)
-    })
-    console.log('Success:', values)
-    // fetchSignUp(values).then(res => {
-    //   console.log(res)
-    // })
-  }
-  const onFinishFailed = (errorInfo: object) => {
-    console.log('Failed:', errorInfo)
-  }
+  const onFinish = (values: object) => fetchLogin(values)
 
   return (
     <Form
@@ -62,9 +52,8 @@ const Login = () => {
       className="form"
       name="basic"
       ref={formRef}
-      initialValues={{ remember: true }}
+      // initialValues={{ remember: true }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
     >
       <Form.Item
         label="学号"
@@ -112,17 +101,7 @@ const Login = () => {
 const SingUp = () => {
   const formRef = useRef()
   const [identity, setIdentity] = useState()
-
-  const onFinish = (values: object) => {
-    console.log('Success:', values)
-    fetchSignUp(values).then(res => {
-      console.log(res)
-    })
-  }
-
-  const onFinishFailed = (errorInfo: object) => {
-    console.log('Failed:', errorInfo)
-  }
+  const onFinish = (values: object) => fetchSignUp(values)
 
   return (
     <Form
@@ -130,9 +109,8 @@ const SingUp = () => {
       className="form"
       name="basic"
       ref={formRef}
-      initialValues={{ remember: true }}
+      // initialValues={{ remember: true }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
     >
       <Form.Item
         label="身份"
@@ -207,7 +185,15 @@ const SingUp = () => {
   )
 }
 
-export default ({ location }) => {
-  const isLogin = /^\/login(\/)?$/.test(location.pathname)
-  return isLogin ? <Login /> : <SingUp />
+const LoginAndSignup = ({ location, isLogin, history }) => {
+  if (isLogin) {
+    history.replace('/')
+    return null
+  }
+  const isLoginPage = /^\/login(\/)?$/.test(location.pathname)
+  return isLoginPage ? <Login /> : <SingUp />
 }
+
+export default connect(({ global }) => ({
+  isLogin: global.isLogin
+}))(LoginAndSignup)

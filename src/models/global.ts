@@ -18,6 +18,9 @@ const globalStore: GlobalStore = {
   subscriptions: {
     setup({ history, dispatch }) {
       // history.listen(({ pathname }) => {
+      //   const isLogin = /^\/login(\/)?$/
+      //   const isSignUp = /^\/sign\-up(\/)?$/
+      //   if (isLogin)
       // })
       dispatch({
         type: 'getLoginStatus'
